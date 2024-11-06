@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es" class="h-full bg-white" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ingreso al Sistema - Tienda Zara</title>
+    <link href="/zara/estilos/login.css" rel="stylesheet">
+    <link href="../static/estilos/login.css " rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  
+  <body class="min-h-screen bg-cover bg-center flex items-center justify-center">
+    <div class="flex flex-col justify-center px-6 py-12 lg:px-8 bg-white bg-opacity-80 rounded-lg shadow-lg">
+      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <img class="mx-auto h-20 w-auto" src="https://download.logo.wine/logo/Zara_(retailer)/Zara_(retailer)-Logo.wine.png" alt="Restaurante Muerte Lenta">
+        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-black-900">Ingreso al sistema</h2>
+      </div>
+
+      <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form class="space-y-6" th:action="@{/login}" method="post" th:object="${usuario}">
+          <div>
+            <label for="email" class="usuario block text-sm font-medium leading-6 text-xl text-black-900">Usuario</label>
+            <div class="mt-2">
+              <input id="email" name="txtUsu" type="text" autocomplete="email" required th:field="*{nombreusuario}" 
+           class="block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-lg sm:leading-6">
+            </div>
+          </div>
+
+         <div>
+            <label for="password" class="contrasenia text-sm font-medium leading-6 text-xl text-black-900">Contraseña</label>
+            <div class="relative mt-2">
+              <input id="password" name="txtCla" type="password" autocomplete="current-password" required th:field="*{contrasenia}" 
+           class="block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-lg sm:leading-6">
+              <span id="togglePassword" class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+                👁️
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <button type="submit" class="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Ingresar</button>
+          </div>
+        </form>
+
+        <p class="mt-10 text-center text-sm text-xl  text-gray-500">
+          ¿No tienes una cuenta?
+          <a th:href="@{/registro}" class="font-semibold leading-6 text-xl text-black hover:text-gray-800">Regístrate</a>
+        </p>
+      </div>
+    </div>
+      
+    <script>
+      const togglePassword = document.querySelector("#togglePassword");
+      const password = document.querySelector("#password");
+
+      togglePassword.addEventListener("click", function () {
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+
+        
+        this.textContent = type === "password" ? "👁️" : "🙈";
+      });
+    </script>
+  </body>
+</html>

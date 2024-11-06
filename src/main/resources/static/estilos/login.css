@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("https://stylelovely.com/wp-content/uploads/2022/09/zara-narciso-portada.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.5); 
+    background-blend-mode: darken;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.usuario {
+    font-size: 30px;
+    font-style: oblique;
+}
+
+.contrasenia {
+    font-size: 30px;
+    font-style: oblique;
+}
+
